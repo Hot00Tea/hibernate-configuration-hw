@@ -16,6 +16,6 @@ public class Main {
         movie.setTitle("Bad Good Girl");
         movie.setDescription("Hot hot hot");
         movieService.add(movie);
-        System.out.println(movie);
+        System.out.println(movieService.get(1L));
     }
 }
