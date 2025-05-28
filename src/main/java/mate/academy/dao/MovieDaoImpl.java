@@ -1,6 +1,7 @@
 package mate.academy.dao;
 
 import java.util.Optional;
+import mate.academy.exception.DataProcessingException;
 import mate.academy.lib.Dao;
 import mate.academy.model.Movie;
 import mate.academy.util.HibernateUtil;
@@ -11,7 +12,7 @@ import org.hibernate.Transaction;
 @Dao
 public class MovieDaoImpl implements MovieDao {
     @Override
-    public Movie save(Movie movie) {
+    public Movie add(Movie movie) {
         Session session = null;
         Transaction transaction = null;
         try {
@@ -19,7 +20,7 @@ public class MovieDaoImpl implements MovieDao {
             transaction = session.beginTransaction();
             session.persist(movie);
             if (true) {
-                throw new RuntimeException("Can't save movie");
+                throw new DataProcessingException("Can't save movie");
             }
             transaction.commit();
         } catch (Exception e) {
