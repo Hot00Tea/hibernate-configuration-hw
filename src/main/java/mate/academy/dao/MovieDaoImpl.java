@@ -1,5 +1,6 @@
 package mate.academy.dao;
 
+import java.util.Optional;
 import mate.academy.lib.Dao;
 import mate.academy.model.Movie;
 import mate.academy.util.HibernateUtil;
@@ -34,10 +35,10 @@ public class MovieDaoImpl implements MovieDao {
     }
 
     @Override
-    public Movie get(Long id) {
+    public Optional<Movie> get(Long id) {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         session.close();
-        return session.get(Movie.class, id);
+        return Optional.ofNullable(session.get(Movie.class, id));
     }
 }
