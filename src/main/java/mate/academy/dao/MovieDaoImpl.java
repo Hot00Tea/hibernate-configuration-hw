@@ -1,6 +1,5 @@
 package mate.academy.dao;
 
-import mate.academy.exception.DataProcessingException;
 import mate.academy.lib.Dao;
 import mate.academy.model.Movie;
 import mate.academy.util.HibernateUtil;
@@ -19,7 +18,7 @@ public class MovieDaoImpl implements MovieDao {
             transaction = session.beginTransaction();
             session.persist(movie);
             if (true) {
-                throw new DataProcessingException("Can't save movie");
+                throw new RuntimeException("Can't save movie");
             }
             transaction.commit();
         } catch (Exception e) {
