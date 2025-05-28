@@ -1,6 +1,7 @@
 package mate.academy;
 
 import mate.academy.lib.Injector;
+import mate.academy.model.Movie;
 import mate.academy.service.MovieService;
 
 public class Main {
@@ -10,5 +11,11 @@ public class Main {
 
         Injector injector = Injector.getInstance(DAO_PATH);
         MovieService movieService = (MovieService) injector.getInstance(MovieService.class);
+
+        Movie movie = new Movie();
+        movie.setTitle("Bad Good Girl");
+        movie.setDescription("Hot hot hot");
+        movieService.add(movie);
+        System.out.println(movie);
     }
 }
